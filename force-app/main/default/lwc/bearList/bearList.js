@@ -7,10 +7,10 @@ export default class BearList extends LightningElement {
 	@track searchTerm = '';
 	@wire(searchBears, {searchTerm: '$searchTerm'})
 	bears;
+	connectedCallback() {
+		loadStyle(this, ursusResources + '/style.css');
+	}
 	handleSearchTermChange(event) {
-		connectedCallback() {
-			loadStyle(this, ursusResources + '/style.css');
-		}
 		// Debouncing this method: do not update the reactive property as
 		// long as this function is being called within a delay of 300 ms.
 		// This is to avoid a very large number of Apex method calls.
